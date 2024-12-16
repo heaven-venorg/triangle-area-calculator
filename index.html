@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      html {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .form {
+        border: 1px solid black;
+        outline: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        box-shadow: 0px 0px 10px black;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        border: 1px solid black;
+        outline: none;
+        border-radius: 25px;
+        box-shadow: 0px 0px 10px black;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      step="0.01"
+      type="number"
+      name="alas"
+      placeholder="Masukan Alas"
+      class="form"
+    />
+    <input
+      step="0.01"
+      type="number"
+      name="tinggi"
+      placeholder="Masukan Tinggi"
+      class="form"
+    />
+    <input
+      type="submit"
+      name="submit"
+      value="Kalkulasi"
+      onclick="kalkulasi()"
+      class="btn"
+    />
+    <div id="result">
+      <!-- Result disini -->
+    </div>
+    <script>
+      // Jika Btn diklik
+      function kalkulasi() {
+        // Inisialisasi input
+        const alas = document.querySelector("input[name=alas]");
+        const tinggi = document.querySelector("input[name=tinggi]");
+        // Rumus luas Segitiga
+        const rumus = (alas.value * tinggi.value) / 2;
+        // Inisialisasi Result
+        const result = document.querySelector("#result");
+        // Validasi jika Alas & Value bersifat string dan kosong
+        if (isNaN(parseFloat(alas.value)) || isNaN(parseFloat(tinggi.value))) {
+          alert("Masukkan nilai numerik untuk Alas dan Tinggi");
+        } else if (alas.value <= 0 || tinggi.value <= 0) {
+          alert("Masukkan nilai positif untuk Alas dan Tinggi");
+        } else {
+          result.innerHTML = `Nilai Luas Segitiga anda adalah = ${rumus}`;
+        }
+      }
+    </script>
+  </body>
+</html>
